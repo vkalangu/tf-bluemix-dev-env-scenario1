@@ -36,6 +36,7 @@ resource "ibm_compute_vm_instance" "vj_vm_instances" {
   hostname       ="${format("vj-paul-example-%02d", count.index + 1)}"
   domain         = "ibm.com"
   datacenter     = "${var.datacenter}"
+  private_vlan_id  = "${ibm_network_vlan.privateVlan1.id}"
   block_storage_ids = ["${ibm_storage_block.bockStorage1.id}"]
   network_speed     = 10 
   ssh_key_ids          = ["${ibm_compute_ssh_key.test_key_1.id}"]
